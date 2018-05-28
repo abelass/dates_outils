@@ -28,6 +28,7 @@
  * 		- h-event (generer une date au format h-event, dans une balise <time> HTML5)
  * @return string
  */
+
 function dates_affdate_debut_fin($date_debut, $date_fin, $horaire = 'oui', $forme = '') {
 	$abbr = '';
 	if (strpos($forme, 'abbr') !== false) {
@@ -56,8 +57,8 @@ function dates_affdate_debut_fin($date_debut, $date_fin, $horaire = 'oui', $form
 	$h = $horaire == 'oui';
 	$hd = date('H:i', $date_debut);
 	$hf = date('H:i', $date_fin);
-	$au = ' ' . strtolower(_T('agenda:evenement_date_au'));
-	$du = _T('agenda:evenement_date_du') . ' ';
+	$au = ' ' . strtolower(_T('dates_outils:date_au')) . ' ';
+	$du = _T('dates_outils:date_du') . ' ';
 	$s = '';
 	if ($d == $f) { // meme jour
 		$s = ucfirst(nom_jour($d, $abbr)).' '.$affdate($d);
