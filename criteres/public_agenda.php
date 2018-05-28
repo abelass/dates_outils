@@ -79,9 +79,10 @@ function critere_fusion_par_mois_dist($idb, &$boucles, $crit) {
  * @param object $boucles
  * @param object $crit
  */
-
-function critere_fusion_par_annee_dist($idb, &$boucles, $crit) {
-	agenda_critere_fusion_par_xx('%Y', 'annee', $idb, $boucles, $crit);
+if (!function_exists('critere_fusion_par_annee_dist')) {
+	function critere_fusion_par_annee_dist($idb, &$boucles, $crit) {
+		agenda_critere_fusion_par_xx('%Y', 'annee', $idb, $boucles, $crit);
+	}
 }
 
 /**
