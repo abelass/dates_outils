@@ -58,6 +58,7 @@ if (!function_exists('critere_fusion_par_jour_dist')) {
 	}
 }
 
+
 /**
  * {fusion_par_mois date_debut}
  * {fusion_par_mois date_fin}
@@ -67,8 +68,9 @@ if (!function_exists('critere_fusion_par_jour_dist')) {
  * @param object $crit
  */
 if (!function_exists('critere_fusion_par_jour_dist')) {
-function critere_fusion_par_mois_dist($idb, &$boucles, $crit) {
-	dates_critere_fusion_par_xx('%Y-%m', 'mois', $idb, $boucles, $crit);
+	function critere_fusion_par_mois_dist($idb, &$boucles, $crit) {
+		dates_critere_fusion_par_xx('%Y-%m', 'mois', $idb, $boucles, $crit);
+	}
 }
 
 /**
