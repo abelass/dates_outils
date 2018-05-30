@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Filtres pour la gestion de dates
  * Les critères tirées de inc/agenda_filtres.php.
@@ -15,11 +16,18 @@
  * Donne les dates d'un intervalle.
  * Par défaut exclus la date fin
  *
- * @param mixed $date_debut
- * @param mixed $date_fin
- * @param integer $diff
- *        	nombre
- * @return string[]
+ * @param string $date_debut
+ *        	date de début
+ * @param string $date_fin
+ *        	* date de fin
+ * @param number $debut
+ *        	décalage par rapport à la date de début (offset)
+ * @param number $fin
+ *        	décalage par rapport à la date de fin (offset)
+ * @param mixed $horaire
+ *        	tenir compte d'horraires
+ *
+ * @return NULL[]
  */
 function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire = false) {
 	$format = 'Y-m-d H:i:s';
