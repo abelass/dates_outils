@@ -26,11 +26,12 @@
  *        	décalage par rapport à la date de fin (offset)
  * @param mixed $horaire
  *        	tenir compte d'horraires
+ * @param string $format
+ *          format de la date
  *
  * @return NULL[]
  */
-function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire = false) {
-	$format = 'Y-m-d H:i:s';
+function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire = false, $format = 'Y-m-d H:i:s') {
 
 	if (!is_integer($date_debut)) {
 		$date_debut = strtotime($date_debut);
@@ -47,7 +48,11 @@ function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire
 
 		while ($i <= $nombre_jours) {
 			$muliplie = $i * 60 * 60 * 24;
-			$dates[] = date($format, $date_debut + $muliplie);
+			$date = date($format, $date_debut + $muliplie);
+			if (!$horaire) {
+				$date = formater_date($date);
+			}
+			$dates[] = $date;
 			$i ++;
 		}
 	}
@@ -72,11 +77,11 @@ function date_relative_brut($date, $decalage, $format = 'Y-m-d H:i:s') {
  *
  * @param string $date
  * @param string $type
- *        	pour le moment 'horaire_zero' met l'horaien à 0.
+ *        	pour le moment 'horaire_zero' met l'horaire à 0.
  * @param string $format
  * @return string
  */
-function formater_date($date, $type, $format = 'Y-m-d H:i:s') {
+function formater_date($date, $type = 'horaire_zero', $format = 'Y-m-d H:i:s') {
 	switch ($type) {
 		case 'horaire_zero':
 			$date = recup_date($date);
