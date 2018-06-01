@@ -50,7 +50,7 @@ function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire
 			$muliplie = $i * 60 * 60 * 24;
 			$date = date($format, $date_debut + $muliplie);
 			if (!$horaire) {
-				$date = formater_date($date, $format);
+				$date = formater_date($date, 'horaire_zero', $format);
 			}
 			$dates[] = $date;
 			$i ++;
