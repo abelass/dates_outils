@@ -45,7 +45,6 @@ function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire
 		$difference = $date_fin - $date_debut;
 		$nombre_jours = round($difference / (60 * 60 * 24)) + $fin;
 		$i = $debut;
-spip_log("difference $difference $date_fin - $date_fin", 'teste');
 		while ($i <= $nombre_jours) {
 			$muliplie = $i * 60 * 60 * 24;
 			$date = date('Y-m-d H:i:s', $date_debut + $muliplie);
