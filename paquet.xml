@@ -1,8 +1,8 @@
 <paquet
 	prefix="dates_outils"
 	categorie="outil"
-	version="1.0.1"
-	etat="dev"
+	version="1.0.2"
+	etat="test"
 	compatibilite="[3.0.0;3.2.*]"
 	logo="prive/themes/spip/images/dates_outils-64.png"
 	documentation="https://github.com/abelass/dates_outils"

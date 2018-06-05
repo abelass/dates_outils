@@ -23,6 +23,7 @@
  * @param string $date_fin : la date de fin au format mysql
  * @param string $horaire : oui / non, permet d'afficher l'horaire, toute autre valeur n'indique que le jour
  * @param string $forme : forme que prendra la date :
+ * 		- complet (afficher l'année même si anné en cours)
  * 		- abbr (afficher le nom des jours en abbrege)
  * 		- hcal (generer une date au format hcal)
  * 		- h-event (generer une date au format h-event, dans une balise <time> HTML5)
@@ -52,6 +53,8 @@ function dates_affdate_debut_fin($date_debut, $date_fin, $horaire = 'oui', $form
 
 	$date_debut = strtotime($date_debut);
 	$date_fin = strtotime($date_fin);
+	$ad = date('Y' , $date_debut);
+	$af = date('Y' , $date_debut);
 	$d = date('Y-m-d', $date_debut);
 	$f = date('Y-m-d', $date_fin);
 	$h = $horaire == 'oui';
@@ -73,7 +76,13 @@ function dates_affdate_debut_fin($date_debut, $date_fin, $horaire = 'oui', $form
 		// meme annee et mois, jours differents
 		if ($h) {
 			$s = $du . $dtstart . affdate_jourcourt($d) . " $hd" . $dtabbr;
+			if ($forme == 'complet') {
+				$s .= ' ' . $ad;
+			}
 			$s .= $au . $dtend . $affdate($f);
+			if ($forme == 'complet') {
+				$s .= ' ' . $ad;
+			}
 			$s .= " $hf";
 			$s .= $dtabbr;
 		} else {
@@ -83,10 +92,16 @@ function dates_affdate_debut_fin($date_debut, $date_fin, $horaire = 'oui', $form
 	} elseif ((date('Y', $date_debut)) == date('Y', $date_fin)) {
 		// meme annee, mois et jours differents
 		$s = $du . $dtstart . affdate_jourcourt($d);
+		if ($forme == 'complet') {
+			$s .= ' ' . $ad;
+		}
 		if ($h) {
 			$s .= " $hd";
 		}
 		$s .= $dtabbr . $au . $dtend . $affdate($f);
+		if ($forme == 'complet') {
+			$s .= ' ' . $ad;
+		}
 		if ($h) {
 			$s .= " $hf";
 		}
@@ -94,12 +109,15 @@ function dates_affdate_debut_fin($date_debut, $date_fin, $horaire = 'oui', $form
 	} else {
 		// tout different
 		$s = $du . $dtstart . affdate($d);
+		if ($forme == 'complet') {
+			$s .= ' ' . $ad;
+		}
 		if ($h) {
 			$s .= ' '.date('(H:i)', $date_debut);
 		}
 		$s .= $dtabbr . $au . $dtend. affdate($f);
 		if ($h) {
-			$s .= ' '.date('(H:i)', $date_fin);
+			$s .= ' '. $af;
 		}
 		$s .= $dtabbr;
 	}
