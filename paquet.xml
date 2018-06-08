@@ -1,15 +1,12 @@
 <paquet
 	prefix="dates_outils"
 	categorie="outil"
-	version="1.0.2"
+	version="1.0.3"
 	etat="test"
 	compatibilite="[3.0.0;3.2.*]"
 	logo="prive/themes/spip/images/dates_outils-64.png"
 	documentation="https://github.com/abelass/dates_outils"
 >
-	<!--
-		Paquet généré le 2018-05-28 10:20:50
-	-->
 
 	<nom>Dates outils</nom>
 	<!-- Des outil pour la gestion des dates -->
@@ -17,7 +14,5 @@
 	<auteur>Rainer Müller</auteur>
 
 	<licence>GNU/GPL v3</licence>
-
-
 
 </paquet>

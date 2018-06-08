@@ -40,6 +40,10 @@ function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire
 		$date_fin = strtotime($date_fin);
 	}
 
+	if (empty($format)) {
+		$format = 'Y-m-d H:i:s';
+	}
+
 	$dates = array();
 	if ($date_fin >= $date_debut) {
 		$difference = $date_fin - $date_debut;
