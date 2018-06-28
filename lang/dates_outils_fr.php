@@ -17,4 +17,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'date_du' => 'du',
 	'dates_outils_titre' => 'Dates outils',
 
+	// P
+	'periode_label' => 'Période :',
+
 );
