@@ -24,25 +24,25 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  * @param object $boucles
  * @param object $crit
  */
+if (!function_exists('dates_critere_fusion_par_xx')) {
+	function dates_critere_fusion_par_xx($format, $as, $idb, &$boucles, $crit) {
+		$boucle = &$boucles[$idb];
+		$type = $boucle->type_requete;
+		$_date = isset($crit->param[0]) ? calculer_liste($crit->param[0], array(), $boucles, $boucles[$idb]->id_parent)
+		: "'".(isset($GLOBALS['table_date'][$type]) ? $GLOBALS['table_date'][$type] : 'date')."'";
 
-function dates_critere_fusion_par_xx($format, $as, $idb, &$boucles, $crit) {
-	$boucle = &$boucles[$idb];
-	$type = $boucle->type_requete;
-	$_date = isset($crit->param[0]) ? calculer_liste($crit->param[0], array(), $boucles, $boucles[$idb]->id_parent)
-	: "'".(isset($GLOBALS['table_date'][$type]) ? $GLOBALS['table_date'][$type] : 'date')."'";
+		$date = $boucle->id_table. '.' .substr($_date, 1, -1);
 
-	$date = $boucle->id_table. '.' .substr($_date, 1, -1);
-
-	// annuler une eventuelle fusion sur cle primaire !
-	foreach ($boucles[$idb]->group as $k => $g) {
-		if ($g == $boucle->id_table.'.'.$boucle->primary) {
-			unset($boucles[$idb]->group[$k]);
+		// annuler une eventuelle fusion sur cle primaire !
+		foreach ($boucles[$idb]->group as $k => $g) {
+			if ($g == $boucle->id_table.'.'.$boucle->primary) {
+				unset($boucles[$idb]->group[$k]);
+			}
 		}
+		$boucles[$idb]->group[]  = 'DATE_FORMAT('.$boucle->id_table.'.".'.$_date.'.", ' . "'$format')";
+		$boucles[$idb]->select[] = 'DATE_FORMAT('.$boucle->id_table.'.".'.$_date.'.", ' . "'$format') AS $as";
 	}
-	$boucles[$idb]->group[]  = 'DATE_FORMAT('.$boucle->id_table.'.".'.$_date.'.", ' . "'$format')";
-	$boucles[$idb]->select[] = 'DATE_FORMAT('.$boucle->id_table.'.".'.$_date.'.", ' . "'$format') AS $as";
 }
-
 
 /**
  * {fusion_par_jour date_debut}
