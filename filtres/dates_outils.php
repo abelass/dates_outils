@@ -94,3 +94,26 @@ function formater_date($date, $type = 'horaire_zero', $format = 'Y-m-d H:i:s') {
 
 	return $date;
 }
+
+/**
+ * Trie les dates
+ *
+ * @param array $dates
+ * @return array
+ */
+function do_trie_dates (array $dates) {
+	usort($dates, "do_compare");
+	return $dates;
+}
+
+/**
+ * cmp()
+ * @param int $a
+ * @param int $b
+ * date comparaison callback
+ **/
+function do_compare($a, $b) {
+	if ($a == $b) return 0;
+
+	return (strtotime($a) < strtotime($b))? -1 : 1;
+}
