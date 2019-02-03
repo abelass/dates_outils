@@ -1,20 +1,20 @@
 <paquet
-	prefix="dates_outils"
-	categorie="outil"
-	version="1.0.7"
-	etat="test"
-	compatibilite="[3.0.0;3.2.*]"
-	logo="prive/themes/spip/images/dates_outils-64.png"
-	documentation="https://github.com/abelass/dates_outils"
+  prefix="dates_outils"
+  categorie="outil"
+  version="1.0.7"
+  etat="test"
+  compatibilite="[3.0.0;3.2.*]"
+  logo="prive/themes/spip/images/dates_outils-64.png"
+  documentation="https://github.com/abelass/dates_outils"
 >
 
-	<nom>Dates outils</nom>
-	<!-- Des outil pour la gestion des dates -->
+  <nom>Dates outils</nom>
+  <!-- Des outil pour la gestion des dates -->
 
-	<auteur>Rainer Müller</auteur>
+  <auteur>Rainer Müller</auteur>
 
-	<licence>GNU/GPL v3</licence>
+  <licence>GNU/GPL v3</licence>
 
 
-	<utilise nom="agenda" compatibilite="[3.14.11;]" />
+  <utilise nom="agenda" compatibilite="[3.14.11;]" />
 </paquet>

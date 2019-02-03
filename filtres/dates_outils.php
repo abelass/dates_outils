@@ -17,15 +17,15 @@
  * Par défaut exclus la date fin
  *
  * @param string $date_debut
- *        	date de début
+ *          date de début
  * @param string $date_fin
- *        	* date de fin
+ *          * date de fin
  * @param number $debut
- *        	décalage par rapport à la date de début (offset)
+ *          décalage par rapport à la date de début (offset)
  * @param number $fin
- *        	décalage par rapport à la date de fin (offset)
+ *          décalage par rapport à la date de fin (offset)
  * @param mixed $horaire
- *        	tenir compte d'horraires
+ *          tenir compte d'horraires
  * @param string $format
  *          format de la date
  *
@@ -33,34 +33,34 @@
  */
 function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire = false, $format = 'Y-m-d H:i:s') {
 
-	if (!is_integer($date_debut)) {
-		$date_debut = strtotime($date_debut);
-	}
-	if (!is_integer($date_fin)) {
-		$date_fin = strtotime($date_fin);
-	}
+  if (!is_integer($date_debut)) {
+    $date_debut = strtotime($date_debut);
+  }
+  if (!is_integer($date_fin)) {
+    $date_fin = strtotime($date_fin);
+  }
 
-	if (empty($format)) {
-		$format = 'Y-m-d H:i:s';
-	}
+  if (empty($format)) {
+    $format = 'Y-m-d H:i:s';
+  }
 
-	$dates = array();
-	if ($date_fin >= $date_debut) {
-		$difference = $date_fin - $date_debut;
-		$nombre_jours = round($difference / (60 * 60 * 24)) + $fin;
-		$i = $debut;
-		while ($i <= $nombre_jours) {
-			$muliplie = $i * 60 * 60 * 24;
-			$date = date('Y-m-d H:i:s', $date_debut + $muliplie);
-			if (!$horaire) {
-				$date = formater_date($date, 'horaire_zero', $format);
-			}
-			$dates[] = $date;
-			$i ++;
-		}
-	}
+  $dates = array();
+  if ($date_fin >= $date_debut) {
+    $difference = $date_fin - $date_debut;
+    $nombre_jours = round($difference / (60 * 60 * 24)) + $fin;
+    $i = $debut;
+    while ($i <= $nombre_jours) {
+      $muliplie = $i * 60 * 60 * 24;
+      $date = date('Y-m-d H:i:s', $date_debut + $muliplie);
+      if (!$horaire) {
+        $date = formater_date($date, 'horaire_zero', $format);
+      }
+      $dates[] = $date;
+      $i ++;
+    }
+  }
 
-	return $dates;
+  return $dates;
 }
 
 /**
@@ -72,7 +72,7 @@ function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire
  * @return string
  */
 function date_relative_brut($date, $decalage, $format = 'Y-m-d H:i:s') {
-	return date($format, strtotime($decalage, strtotime($date)));
+  return date($format, strtotime($decalage, strtotime($date)));
 }
 
 /**
@@ -80,19 +80,19 @@ function date_relative_brut($date, $decalage, $format = 'Y-m-d H:i:s') {
  *
  * @param string $date
  * @param string $type
- *        	pour le moment 'horaire_zero' met l'horaire à 0.
+ *          pour le moment 'horaire_zero' met l'horaire à 0.
  * @param string $format
  * @return string
  */
 function formater_date($date, $type = 'horaire_zero', $format = 'Y-m-d H:i:s') {
-	switch ($type) {
-		case 'horaire_zero':
-			$date = recup_date($date);
-			$date = date($format, mktime(0, 0, 0, $date[1], $date[2], $date[0]));
-			break;
-	}
+  switch ($type) {
+    case 'horaire_zero':
+      $date = recup_date($date);
+      $date = date($format, mktime(0, 0, 0, $date[1], $date[2], $date[0]));
+      break;
+  }
 
-	return $date;
+  return $date;
 }
 
 /**
@@ -102,8 +102,8 @@ function formater_date($date, $type = 'horaire_zero', $format = 'Y-m-d H:i:s') {
  * @return array
  */
 function do_trie_dates (array $dates) {
-	usort($dates, "do_compare");
-	return $dates;
+  usort($dates, "do_compare");
+  return $dates;
 }
 
 /**
@@ -113,7 +113,7 @@ function do_trie_dates (array $dates) {
  * date comparaison callback
  **/
 function do_compare($a, $b) {
-	if ($a == $b) return 0;
+  if ($a == $b) return 0;
 
-	return (strtotime($a) < strtotime($b))? -1 : 1;
+  return (strtotime($a) < strtotime($b))? -1 : 1;
 }
