@@ -117,3 +117,46 @@ function do_compare($a, $b) {
 
 	return (strtotime($a) < strtotime($b))? -1 : 1;
 }
+
+/**
+ * Calcule la différence entre deux dates
+ *
+ * @param string $date_debut
+ * @param string $date_fin
+ * @param string $type
+ *   Type de difference en : annee, mois,jour,heures,minutes ou secondes
+ * 
+ * @return integer
+ *   La différence
+ */
+function dates_difference($date_debut, $date_fin, $type) {
+	/*$fin = strtotime(date('Y-m-d', strtotime($date_fin_contexte)));
+	$debut = strtotime(date('Y-m-d', strtotime($date_debut_contexte)));*/
+	$debut = new DateTime($date_debut);
+	$fin = new DateTime($date_fin);
+	$difference_dates = $fin->diff($debut);
+
+	$diviser = 1;
+	switch ($type) {
+		case 'annee':
+			$difference = $difference_dates->y;
+			break;
+		case 'mois':
+			$difference = $difference_dates->m;
+			break;
+		case 'jour':
+			$difference = $difference_dates->d;
+			break;
+		case 'heures':
+			$difference = $difference_dates->h;
+			break;
+		case 'minutes':
+			$difference = $difference_dates->i;
+			break;
+		case 'secondes':
+			$difference = $difference_dates->s;
+			break;
+	}
+
+	return $difference;
+}
