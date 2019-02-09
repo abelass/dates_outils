@@ -19,8 +19,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'dates_outils_titre' => 'Dates outils',
 
 	// I
-	'info_date_debut' = 'date début',
-	'info_date_fin' = 'date fin',
+	'info_date_debut' => 'date début',
+	'info_date_fin' => 'date fin',
 
 	// J
 	'champ_jour_label' => 'Jour :',
