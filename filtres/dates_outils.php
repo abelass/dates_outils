@@ -125,7 +125,7 @@ function do_compare($a, $b) {
  * @param string $date_fin
  * @param string $type
  *   Type de difference en : annee, mois,jour,heures,minutes ou secondes
- * 
+ *
  * @return integer
  *   La différence
  */

@@ -28,6 +28,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// M
 	'champ_mois_label' => 'Mois :',
 
+	// N
+	'nuits' => 'nuits',
+
 	// P
 	'periode_label' => 'Période :',
 
