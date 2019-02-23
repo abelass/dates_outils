@@ -64,7 +64,7 @@ function dates_intervalle($date_debut, $date_fin, $debut = 0, $fin = 0, $horaire
 }
 
 /**
- * Calcule la mdate para rapport à un décalage donnée
+ * Calcule la date para rapport à un décalage donnée
  *
  * @param string $date
  * @param string $decalage
